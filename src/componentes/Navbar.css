@@ -1,0 +1,29 @@
+.navbar {
+    height: 60px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: #0B101B;
+  }
+  
+  .navContainer {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 60px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 24px;
+    
+  }
+  
+  .navLogo {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #144EE3, #EB568E 19%, #A353AA 64%, #144EE3 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
