@@ -1,9 +1,20 @@
 import React from 'react'
 import Main from './Main'
 import CopyToClipboard from 'react-copy-to-clipboard'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import copy from "../copy-solid.svg"
+import copy2 from "../clipboard.svg"
 import "./Main.css"
 const Table = ({data}) => {
 
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Texto copiado al portapapeles');
+    } catch (err) {
+      console.error('Error al copiar el texto: ', err);
+    }
+  }
     
   return (
     <div className="container1">
@@ -11,9 +22,8 @@ const Table = ({data}) => {
       <thead>
         <tr>
           <th>Short Link</th>
+          <th></th>
           <th className="tabmobile">Original Link</th>
-          <th className="tabmobile">Clicks</th>
-          <th className="tabmobile">Date</th>
         </tr>
       </thead>
     { data.map(urlObject => (
@@ -21,10 +31,10 @@ const Table = ({data}) => {
 <tbody>
         
 <tr>
-  {urlObject.shortUrl != null ? <td>{urlObject.shortUrl}</td> : <td>{urlObject.customUrl}</td> }
-  <td className="tabmobile">{urlObject.originalUrl}</td>
-  <td className="tabmobile">{urlObject.counter}</td>
-  <td className="tabmobile">{urlObject.createdAt}</td>
+  {urlObject.shortUrl != null ? 
+  <td className='fila-container'>
+  <button onClick={() => copyToClipboard(urlObject.shortUrl)} className='button-copy' ><img src={copy2} className='button-image'/></button><p>{urlObject.shortUrl}</p> </td> : <td className='fila-container'><p>{urlObject.customUrl}</p><button onClick={() => copyToClipboard(urlObject.shortUrl)} className='button-copy' ><img src={copy2} className='button-image'/></button></td> }
+  <td className="tabmobile"><p>{urlObject.originalUrl}</p> </td>
 </tr>
 </tbody>
 
