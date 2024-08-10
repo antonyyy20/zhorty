@@ -3,7 +3,7 @@ import Main from './Main'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import copy from "../copy-solid.svg"
-import copy2 from "../clipboard.svg"
+import copy2 from "../copy.png"
 import "./Main.css"
 const Table = ({data}) => {
 
@@ -22,7 +22,6 @@ const Table = ({data}) => {
       <thead>
         <tr>
           <th>Short Link</th>
-          <th></th>
           <th className="tabmobile">Original Link</th>
         </tr>
       </thead>
@@ -33,8 +32,9 @@ const Table = ({data}) => {
 <tr>
   {urlObject.shortUrl != null ? 
   <td className='fila-container'>
-  <button onClick={() => copyToClipboard(urlObject.shortUrl)} className='button-copy' ><img src={copy2} className='button-image'/></button><p>{urlObject.shortUrl}</p> </td> : <td className='fila-container'><p>{urlObject.customUrl}</p><button onClick={() => copyToClipboard(urlObject.shortUrl)} className='button-copy' ><img src={copy2} className='button-image'/></button></td> }
-  <td className="tabmobile"><p>{urlObject.originalUrl}</p> </td>
+    <p>{urlObject.shortUrl}</p> 
+  <button onClick={() => copyToClipboard(urlObject.shortUrl)} className='button-copy' ><img src={copy2} className='button-image'/></button></td> : <td className='fila-container'><p>{urlObject.customUrl}</p><button onClick={() => copyToClipboard(urlObject.shortUrl)} className='button-copy' ><img src={copy2} className='button-image'/></button></td> }
+  <td className="tabmobile"><p>{urlObject.originalUrl}</p></td>
 </tr>
 </tbody>
 
